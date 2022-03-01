@@ -1,0 +1,179 @@
+#include "DynamicQueue.h"
+#include <iostream>
+#include <stdlib.h>
+
+
+//-------------------------------------------------------------------------------
+// constructors
+//-------------------------------------------------------------------------------
+/********************************************************************************
+default constructor
+********************************************************************************/
+DynamicQueue::DynamicQueue() {
+    front = nullptr;
+    rear = nullptr;
+}
+
+//---------------------------------------------------------------
+// methods (inserts and deletes)
+//---------------------------------------------------------------
+bool DynamicQueue::empty() {
+    return (front == nullptr);
+}
+
+void DynamicQueue::insert(char x) {
+//    if(empty()){
+//        std::cout << "Empty queue" << std::endl;
+//    }
+
+    DynamicNode* p = new DynamicNode;
+    p->info =x;
+    p->next = nullptr;
+
+    if (empty()) {
+        front = p;
+    }
+    else {
+        rear->next = p;
+    }
+
+    rear = p;
+
+
+}
+
+int DynamicQueue::remove() {
+    if (empty()) {
+        std::cout << "queue underflow";
+        exit(1);
+    }
+
+    DynamicNode* p = front;
+    int temp = p->info;
+    front = p->next;
+    delete p;
+    if (front == nullptr)
+        rear = nullptr;
+
+    return temp;
+}
+
+
+// check if key is present is Queue
+bool DynamicQueue::keyInQueue(char x) {
+    DynamicNode * p = front;
+    for (p; p!= nullptr; p = p->next){
+        if (p->info == x){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+// print list
+void DynamicQueue::print() {
+    if (empty()) {
+        std::cout << "Queue is empty." << std::endl;
+    }
+    else {
+        std::cout << "Data of queue: ";
+        DynamicNode *p = front;
+        while (p != nullptr) {
+            std::cout << p->info;
+            if (p->next != nullptr) {
+                std::cout << " -> ";
+            }
+            else {
+                std::cout << "\n";
+            }
+            p = p->next;
+        }
+    }
+}
+
+
+bool DynamicQueue::isFull() {
+    int count = 0;
+    DynamicNode * p = front;
+    for (p; p->next != nullptr; p = p->next) {
+        count +=1;
+    }
+
+    if (count == QUEUESIZE -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
+
+void DynamicQueue::removeX(char x) {
+    DynamicNode* p = front; // p is the first node
+    DynamicNode* q = nullptr; // q will be the one behind p, null for now
+    while (p != nullptr) { // traverse the list
+        if (p->info == x) { // you found it
+            p = p->next;
+            if (q == nullptr) {
+                remove(); // remove first node of the list
+            }
+            else {
+                deleteAfter(q); // q is before p, p has info=x
+            }
+        }
+        else {
+            // advance to next node of list
+            q = p;
+            p = p->next;
+        }
+    } // end while
+} // end removeX
+
+
+// deletes node after p
+int DynamicQueue::deleteAfter(DynamicNode *p) {
+    if(p == nullptr || p->next == nullptr)  {
+        std::cout << "void deletion" << std::endl;
+        exit(1);
+    }
+
+    DynamicNode* q = p->next; // q is a temp to the next of p
+    int temp = q->info;       // info to be returned
+    p->next = q->next;        // update the next
+
+    //if p->next is null make rear p
+    if(p->next == nullptr){
+        rear = p;
+    }
+
+    delete q;                 // delete actual node in memory
+    return temp;    // return info of deleted node
+
+}
+
+
+void DynamicQueue::queueCheck(char x) {
+
+    //if x already exist in Queue
+    if(empty()){
+        insert(x);
+    }
+
+    if(keyInQueue(x)){
+        removeX(x); // remove that x
+        insert(x);  // insert in rear
+    }
+    //if not in queue
+    else{
+        //if it is full
+        if(!isFull()){
+            insert(x);  // if not full insert at rear;
+        }
+        else{
+            remove();   //if full remove front
+            insert(x);  // insert in the rear
+        }
+    }
+
+}
