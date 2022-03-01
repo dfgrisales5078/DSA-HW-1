@@ -1,3 +1,8 @@
+// COP 3530 - Homework 1
+// 02/27/2022
+// Diego Grisales
+// Ragy Costa De Jesus
+
 #include <iostream>
 #include "DynamicQueue.h"
 #include <string>
