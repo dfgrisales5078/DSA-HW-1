@@ -9,7 +9,7 @@ int main() {
 
     // if stream used to read info from data.txt file
     std::ifstream myFile;
-    myFile.open(R"(C:\Users\diego\OneDrive - Florida Gulf Coast University\CLion\DSAhw1\data.txt)");
+    myFile.open(R"(C:\Users\diego\OneDrive - Florida Gulf Coast University\CLion\Hw1\data.txt)");
 
     if (!myFile){
         // Print an error and exit
