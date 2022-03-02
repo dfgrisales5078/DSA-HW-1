@@ -13,16 +13,14 @@ class DynamicQueue {
 public:
     //---------------------------------------------------------------
     // constructors
-    //---------------------------------------------------------------
     DynamicQueue();
 
     //---------------------------------------------------------------
     // methods (inserts and deletes)
-    //---------------------------------------------------------------
+
     bool empty();
     void insert(char x);
     int remove();
-
     bool keyInQueue(char x);
     void print();
     bool isFull();

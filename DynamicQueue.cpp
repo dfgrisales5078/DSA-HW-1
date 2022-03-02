@@ -5,10 +5,6 @@
 
 //-------------------------------------------------------------------------------
 // constructors
-//-------------------------------------------------------------------------------
-/********************************************************************************
-default constructor
-********************************************************************************/
 DynamicQueue::DynamicQueue() {
     front = nullptr;
     rear = nullptr;
@@ -16,15 +12,11 @@ DynamicQueue::DynamicQueue() {
 
 //---------------------------------------------------------------
 // methods (inserts and deletes)
-//---------------------------------------------------------------
 bool DynamicQueue::empty() {
     return (front == nullptr);
 }
 
 void DynamicQueue::insert(char x) {
-//    if(empty()){
-//        std::cout << "Empty queue" << std::endl;
-//    }
 
     DynamicNode* p = new DynamicNode;
     p->info =x;
@@ -74,15 +66,15 @@ bool DynamicQueue::keyInQueue(char x) {
 // print list
 void DynamicQueue::print() {
     if (empty()) {
-        std::cout << "Queue is empty." << std::endl;
+        std::cout << "Empty " << std::endl;
     }
     else {
-        std::cout << "Data of queue: ";
+
         DynamicNode *p = front;
         while (p != nullptr) {
             std::cout << p->info;
             if (p->next != nullptr) {
-                std::cout << " -> ";
+                std::cout << "->";
             }
             else {
                 std::cout << "\n";
@@ -155,24 +147,36 @@ int DynamicQueue::deleteAfter(DynamicNode *p) {
 
 void DynamicQueue::queueCheck(char x) {
 
-    //if x already exist in Queue
+    //if queue is empty, insert in rear
     if(empty()){
         insert(x);
+        std::cout << "Inserting " << x << " in rear. ";
+        return;
     }
 
     if(keyInQueue(x)){
-        removeX(x); // remove that x
-        insert(x);  // insert in rear
+        DynamicNode * p = rear;
+        if (p->info == x) {
+            std::cout << x << " is already rear. ";
+            return;
+        }
+        else {
+            removeX(x); // remove that x
+            insert(x);  // insert in rear
+            std::cout << "Moving " << x << " to rear. ";
+        }
     }
     //if not in queue
     else{
         //if it is full
         if(!isFull()){
             insert(x);  // if not full insert at rear;
+            std::cout << "Inserting " << x << " in rear. ";
         }
         else{
             remove();   //if full remove front
             insert(x);  // insert in the rear
+            std::cout << "Q is full, removing front. Inserting " << x << " in rear. ";
         }
     }
 
