@@ -23,7 +23,7 @@ For example, to insert key ‘a’ into a specific queue, queues[i]:
 	3. Else  // ‘a’ already exists in the queue
 		-  Move the node with ‘a’ to the rear (so rear is again the most recently referenced key).
 
-Example output using data.txt file, using number of queues N = 4 and queue size QUEUESIZE = 4
+Example output using data.txt file (https://github.com/dfgrisales5078/DSA-QUEUES-HW/blob/main/cmake-build-debug/data.txt) , using number of queues N = 4 and queue size QUEUESIZE = 4
 
 
 ![](hw1.png)
