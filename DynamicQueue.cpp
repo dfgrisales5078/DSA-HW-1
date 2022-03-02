@@ -12,29 +12,30 @@ DynamicQueue::DynamicQueue() {
 
 //---------------------------------------------------------------
 // methods (inserts and deletes)
+
+// check if queue is empty
 bool DynamicQueue::empty() {
     return (front == nullptr);
 }
 
+// insert at the rear of the queue
 void DynamicQueue::insert(char x) {
-
     DynamicNode* p = new DynamicNode;
     p->info =x;
     p->next = nullptr;
-
     if (empty()) {
         front = p;
     }
     else {
         rear->next = p;
     }
-
     rear = p;
 
 
 }
 
-int DynamicQueue::remove() {
+// remove from the front of the queue
+char DynamicQueue::remove() {
     if (empty()) {
         std::cout << "queue underflow";
         exit(1);
@@ -63,7 +64,7 @@ bool DynamicQueue::keyInQueue(char x) {
 }
 
 
-// print list
+// print queue
 void DynamicQueue::print() {
     if (empty()) {
         std::cout << "Empty " << std::endl;
@@ -84,7 +85,7 @@ void DynamicQueue::print() {
     }
 }
 
-
+// check if queue is full
 bool DynamicQueue::isFull() {
     int count = 0;
     DynamicNode * p = front;
@@ -101,6 +102,7 @@ bool DynamicQueue::isFull() {
 
 }
 
+// used to remove elements already present in the queue
 void DynamicQueue::removeX(char x) {
     DynamicNode* p = front; // p is the first node
     DynamicNode* q = nullptr; // q will be the one behind p, null for now
@@ -124,7 +126,7 @@ void DynamicQueue::removeX(char x) {
 
 
 // deletes node after p
-int DynamicQueue::deleteAfter(DynamicNode *p) {
+char DynamicQueue::deleteAfter(DynamicNode *p) {
     if(p == nullptr || p->next == nullptr)  {
         std::cout << "void deletion" << std::endl;
         exit(1);
@@ -144,7 +146,7 @@ int DynamicQueue::deleteAfter(DynamicNode *p) {
 
 }
 
-
+// method used to check queues and insert keys
 void DynamicQueue::queueCheck(char x) {
 
     //if queue is empty, insert in rear
@@ -154,25 +156,29 @@ void DynamicQueue::queueCheck(char x) {
         return;
     }
 
+    // if key already in queue
     if(keyInQueue(x)){
+        // if key already in rear, return
         DynamicNode * p = rear;
         if (p->info == x) {
             std::cout << x << " is already rear. ";
             return;
         }
+        // else remove x from previous position and insert at rear
         else {
             removeX(x); // remove that x
             insert(x);  // insert in rear
             std::cout << "Moving " << x << " to rear. ";
         }
     }
-    //if not in queue
+    //if keys not in queue
     else{
-        //if it is full
+        //if queue not full
         if(!isFull()){
             insert(x);  // if not full insert at rear;
             std::cout << "Inserting " << x << " in rear. ";
         }
+        // if full
         else{
             remove();   //if full remove front
             insert(x);  // insert in the rear

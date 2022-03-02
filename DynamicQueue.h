@@ -20,12 +20,12 @@ public:
 
     bool empty();
     void insert(char x);
-    int remove();
+    char remove();
     bool keyInQueue(char x);
     void print();
     bool isFull();
     void removeX(char x);
-    int deleteAfter(DynamicNode *p);
+    char deleteAfter(DynamicNode *p);
     void queueCheck(char x);
 
 private:
