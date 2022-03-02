@@ -23,10 +23,10 @@ public:
     char remove();
     bool keyInQueue(char x);
     void print();
-    bool isFull();
-    void removeX(char x);
+    bool full();
+    void findAndRemove(char x);
     char deleteAfter(DynamicNode *p);
-    void queueCheck(char x);
+    void checkQueueAndInsert(char x);
 
 private:
     DynamicNode* front;

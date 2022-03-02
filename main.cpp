@@ -33,7 +33,7 @@ int main() {
             index = line[2];
 
             std::cout << "Read key " << key << " for queue " << index << ". ";
-            queueArray[std::stoi(&index)].queueCheck(key);
+            queueArray[std::stoi(&index)].checkQueueAndInsert(key);
             std::cout << "Q" << index << ": ";
             queueArray[std::stoi(&index)].print();
         }
@@ -51,7 +51,6 @@ int main() {
     queueArray[2].print();
     std::cout << "Q3: ";
     queueArray[3].print();
-
 
     return 0;
 }

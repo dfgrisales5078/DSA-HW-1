@@ -86,7 +86,7 @@ void DynamicQueue::print() {
 }
 
 // check if queue is full
-bool DynamicQueue::isFull() {
+bool DynamicQueue::full() {
     int count = 0;
     DynamicNode * p = front;
     for (p; p->next != nullptr; p = p->next) {
@@ -103,7 +103,7 @@ bool DynamicQueue::isFull() {
 }
 
 // used to remove elements already present in the queue
-void DynamicQueue::removeX(char x) {
+void DynamicQueue::findAndRemove(char x) {
     DynamicNode* p = front; // p is the first node
     DynamicNode* q = nullptr; // q will be the one behind p, null for now
     while (p != nullptr) { // traverse the list
@@ -122,7 +122,7 @@ void DynamicQueue::removeX(char x) {
             p = p->next;
         }
     } // end while
-} // end removeX
+} // end findAndRemove
 
 
 // deletes node after p
@@ -147,7 +147,7 @@ char DynamicQueue::deleteAfter(DynamicNode *p) {
 }
 
 // method used to check queues and insert keys
-void DynamicQueue::queueCheck(char x) {
+void DynamicQueue::checkQueueAndInsert(char x) {
 
     //if queue is empty, insert in rear
     if(empty()){
@@ -166,7 +166,7 @@ void DynamicQueue::queueCheck(char x) {
         }
         // else remove x from previous position and insert at rear
         else {
-            removeX(x); // remove that x
+            findAndRemove(x); // remove that x
             insert(x);  // insert in rear
             std::cout << "Moving " << x << " to rear. ";
         }
@@ -174,7 +174,7 @@ void DynamicQueue::queueCheck(char x) {
     //if keys not in queue
     else{
         //if queue not full
-        if(!isFull()){
+        if(!full()){
             insert(x);  // if not full insert at rear;
             std::cout << "Inserting " << x << " in rear. ";
         }
