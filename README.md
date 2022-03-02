@@ -21,5 +21,5 @@ For example, to insert key ‘a’ into a specific queue, queues[i]:
 Example output using data.txt file, using number of queues N = 4 and queue size QUEUESIZE = 4
 
 
-[!]
+![](hw1.png)
 
