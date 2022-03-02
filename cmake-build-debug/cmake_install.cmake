@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/diego/OneDrive - Florida Gulf Coast University/CLion/Hw1
+# Install script for directory: C:/Users/diego/OneDrive - Florida Gulf Coast University/CLion/DSA Hw 1 Queues
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/diego/OneDrive - Florida Gulf Coast University/CLion/Hw1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/diego/OneDrive - Florida Gulf Coast University/CLion/DSA Hw 1 Queues/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
