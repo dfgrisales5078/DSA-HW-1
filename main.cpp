@@ -42,7 +42,6 @@ int main() {
 
     myFile.close();
 
-
     std::cout << "\n..Final Queues.." << std::endl;
     std::cout << "Q0: ";
     queueArray[0].print();
