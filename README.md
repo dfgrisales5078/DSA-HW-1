@@ -1,4 +1,9 @@
 #
+
+Group assignment for Data Structures and Algorithms. Worked with Ragy Costa De Jesus.
+
+#
+
 - In this assignment, you will implement **_N_ dynamic priority queues**. Let us first look at a single queue. Your program is given a sequence of objects, for example: a, b, w, a, x, s, … The queue maintains _numElements_ such objects, so that the first (front) is the oldest in the sequence, and the last (rear) is the most recent in the sequence. When the queue is full, the oldest (front) is deleted, so that the new object can be inserted (in rear). If an object that is already in the queue is seen again, it becomes the most recent (= it is moved to the rear). This way, the queue is maintained ordered by the key’s place in the sequence (rear = most recently referenced, front = least recently referenced).
 
 - The **queue** will be implemented using a queue based on a **single-linked list** (_DynamicNode_, rear and front pointers, so it should be similar to _DynamicQueue_ on Canvas Files). Elements are inserted at the rear, deletion is explained in the following paragraphs. To implement a SINGLE queue, you CANNOT use: array, or any available library or STL classes_._
